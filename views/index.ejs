@@ -1,34 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flash Cards</title>
-  </head>
+<%- include('partials/header.ejs') %>
   <body>
-    <h1>Flash cards</h1>
-    <hr />
-    <p>Lista de perguntas:</p>
-    <br />
-    <br />
-    <p>Nome: <%= nome %></p>
-    <p>Linguagem: <%= lang %></p>
-    <p>Empresa: <%= empresa %></p>
-    <p>Salario: R$<%= salario %></p>
-
-    <% if(msg){%>
-    <h3>Isso é uma msg de Erro!</h3>
-    <%} else{%>
-    <h3>Não existe erros!</h3>
-    <%}%> 
-    
-    <!-- forEach -->
-
-    <% produtos.forEach(produto => {%>
-      <hr>
-      <h3><%=produto.nome%></h3>
-      <h5><%=produto.preco%></h5>
-      <%})%>
+    <%- include('partials/navBar.ejs') %>
+    <h1>Estilo do bootstrap</h1>
   </body>
-</html>
+
+<%- include('partials/footer.ejs') %>
