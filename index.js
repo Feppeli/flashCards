@@ -31,7 +31,16 @@ app.use(bodyParser.json());
 
 // ROTAS
 app.get("/", (req, res) => {
-  res.render("index");
+
+  // LISTANDO OS DADOS DO BANCO DE DADOS NO FRONT
+  Pergunta.findAll({raw: true, order: [['id', 'DESC' ]]})/* Metodo responsável por procurar todas as perguntas guardadas no banco de dados */
+  .then(perguntas => {
+    res.render("index", {
+      perguntas: perguntas
+    });
+  })
+/*  */
+  
 });
 
 app.get("/perguntar", (req, res) => {
