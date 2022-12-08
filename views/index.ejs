@@ -1,6 +1,7 @@
 <%- include('partials/header.ejs') %>
   <body>
     <%- include('partials/navBar.ejs') %>
+    
     <div class="container">
       <hr>
       <h1>Perguntas</h1>
@@ -17,7 +18,7 @@
           </div>
 
           <div class="card-footer">
-            <button class="btn btn-primary">Responder</button>
+            <a href="/pergunta/<%= pergunta.id%>"><button class="btn btn-primary" >Responder</button></a>
           </div>
 
         </div>

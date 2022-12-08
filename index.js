@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const connection = require("./database/database");
 const PerguntaModel = require('./database/models/Pergunta');
 const Pergunta = require("./database/models/Pergunta");
+const Resposta = require("./database/models/Resposta");
 
 // Database
 connection
@@ -29,7 +30,13 @@ app.use(
 ); /* confiuguração do body parser */
 app.use(bodyParser.json());
 
+
+
+
+
+//
 // ROTAS
+//
 app.get("/", (req, res) => {
 
   // LISTANDO OS DADOS DO BANCO DE DADOS NO FRONT
@@ -39,7 +46,6 @@ app.get("/", (req, res) => {
       perguntas: perguntas
     });
   })
-/*  */
   
 });
 
@@ -61,10 +67,30 @@ app.post("/salvarpergunta", (req, res) => {/* Recebendo os dados da pergunta */
   })
 });
 
+app.get('/pergunta/:id', (req, res) => {
+  var id = req.params.id;
+
+  Pergunta.findOne({
+    where: {id: id}
+  }).then(pergunta => {
+    if(pergunta != undefined){
+      res.render('pergunta.ejs', {
+        pergunta: pergunta
+      })
+    }else{
+      res.redirect('/')
+    }
+  })
+});
+
+
+//
 // START DO SERVIDOR
+//
 app.listen(port, (err) => {
   console.log(`Servidor rodando em http://localhost:${port}`);
   if (err) {
     console.log(`Ocorreu um erro: ${err}`);
   }
 });
+ 
